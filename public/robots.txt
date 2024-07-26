@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://clydedsouza.net
+
+# Sitemaps
+Sitemap: https://clydedsouza.net/sitemap.xml
