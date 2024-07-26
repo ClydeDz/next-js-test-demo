@@ -4,7 +4,14 @@ import Head from "next/head";
 import Link from "next/link";
 import variables from "../../styles/variables.module.scss";
 
-export default function Index() {
+export async function getStaticProps() {
+  const res = await fetch("https://api.clydedsouza.net/platforms.json");
+  const repo = await res.json();
+  return { props: { repo } };
+}
+
+export default function Index({ repo }) {
+  console.log(repo.data);
   return (
     <>
       <Head>
