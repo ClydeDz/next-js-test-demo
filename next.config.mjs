@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "export",
-  basePath: "/out",
+  basePath: "/next-js-test-demo",
   reactStrictMode: true,
   async exportPathMap(defaultPathMap) {
     return {
