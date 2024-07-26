@@ -4,14 +4,21 @@ import Head from "next/head";
 import Link from "next/link";
 import variables from "../../styles/variables.module.scss";
 
-export async function getStaticProps() {
+async function getData() {
   const res = await fetch("https://api.clydedsouza.net/platforms.json");
-  const repo = await res.json();
-  return { props: { repo } };
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+
+  const data = await res.json();
+
+  return data;
 }
 
-export default function Index({ repo }) {
-  console.log(repo.data);
+export default async function Index() {
+  const repoData = await getData();
   return (
     <>
       <Head>
@@ -24,7 +31,11 @@ export default function Index({ repo }) {
       <Link href={"/about"}>Home</Link>
       {/* <main className={styles.main}> */}
       <h1>Hello, About.js!</h1>
-      <p style={{ color: variables.primaryColor }}>demo</p>
+      <p style={{ color: variables.primaryColor }}>demo123</p>
+
+      {repoData.data.map((i) => {
+        return <p key={i.title}>{i.title}</p>;
+      })}
       {/* </main> */}
     </>
   );

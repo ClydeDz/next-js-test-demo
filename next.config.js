@@ -1,25 +1,8 @@
-/** @type {import('next').NextConfig} */
-
-// import path from "path";
+// @ts-check
 const path = require("path");
 
-// const nextConfig = {
-//   output: "export",
-//   basePath: "/next-js-test-demo",
-//   reactStrictMode: true,
-//   sassOptions: {
-//     includePaths: [path.join(__dirname, "styles")],
-//   },
-//   async exportPathMap(defaultPathMap) {
-//     return {
-//       ...defaultPathMap,
-//     };
-//   },
-// };
-
-// export default nextConfig;
-
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   output: "export",
   basePath: "/next-js-test-demo",
   reactStrictMode: true,
@@ -27,3 +10,5 @@ module.exports = {
     includePaths: [path.join(__dirname, "styles")],
   },
 };
+
+module.exports = nextConfig;
